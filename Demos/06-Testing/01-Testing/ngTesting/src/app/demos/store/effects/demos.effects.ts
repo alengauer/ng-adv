@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { DemoService } from '../../demo.service';
 import { Observable, of } from 'rxjs';
 import { mergeMap, map, catchError, pluck, exhaustMap } from 'rxjs/operators';
@@ -18,8 +18,8 @@ import { DemoItem } from '../../demo-item.model';
 export class DemosEffects {
   constructor(private actions$: Actions, private service: DemoService) {}
 
-  @Effect()
-  loadDemos$: Observable<DemosActions> = this.actions$.pipe(
+  
+  loadDemos$: Observable<DemosActions> = createEffect(() => this.actions$.pipe(
     ofType(DemosActionTypes.LoadDemos),
     mergeMap(() =>
       this.service.getDemos().pipe(
@@ -27,10 +27,10 @@ export class DemosEffects {
         catchError((err) => of(new LoadDemosError(err)))
       )
     )
-  );
+  ));
 
-  @Effect()
-  addDemo$: Observable<DemosActions> = this.actions$.pipe(
+  
+  addDemo$: Observable<DemosActions> = createEffect(() => this.actions$.pipe(
     ofType(DemosActionTypes.AddDemo),
     pluck('payload'),
     exhaustMap((demo) =>
@@ -39,10 +39,10 @@ export class DemosEffects {
         catchError((err) => of(new DeleteDemoError(err)))
       )
     )
-  );
+  ));
 
-  @Effect()
-  deleteDemo$: Observable<DemosActions> = this.actions$.pipe(
+  
+  deleteDemo$: Observable<DemosActions> = createEffect(() => this.actions$.pipe(
     ofType(DemosActionTypes.DeleteDemo),
     pluck('payload'),
     exhaustMap((demo) =>
@@ -51,5 +51,5 @@ export class DemosEffects {
         catchError((err) => of(new DeleteDemoError(err)))
       )
     )
-  );
+  ));
 }
