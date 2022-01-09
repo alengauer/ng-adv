@@ -24,6 +24,7 @@ import { NgxFormlyComponent } from './samples/ngx-formly/ngx-formly.component';
 import { ReactiveCascadeComponent } from './samples/reactive-cascade/reactive-cascade.component';
 import { ReactiveFormsComponent } from './samples/reactive-forms/reactive-forms.component';
 import { ReactiveValidationComponent } from './samples/reactive-validation/reactive-validation.component';
+import { ControlValueAccessorComponent } from './samples/control-value-accessor/control-value-accessor.component';
 
 const appearance: MatFormFieldDefaultOptions = {
   appearance: 'standard',
@@ -44,6 +45,7 @@ const demoRoutes: Routes = [
       { path: 'validation', component: ReactiveValidationComponent },
       { path: 'cascade', component: ReactiveCascadeComponent },
       { path: 'ngx-formly', component: NgxFormlyComponent },
+      { path: 'cva', component: ControlValueAccessorComponent },
     ],
   },
 ];
@@ -61,6 +63,7 @@ const demoRoutes: Routes = [
     NgxFormlyComponent,
     AsyncPipeComponent,
     ActionStreamsComponent,
+    ControlValueAccessorComponent,
   ],
   imports: [
     CommonModule,

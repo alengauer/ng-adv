@@ -55,6 +55,14 @@
       "component": "AsyncPipeComponent",
       "visible": true,
       "sortOrder": 3
+    },
+    {
+      "url": "cva",
+      "topicid": 3,
+      "title": "ControlValueAccessor",
+      "component": "ControlValueAccessorComponent",
+      "visible": true,
+      "sortOrder": 9
     }
   ],
   "skills": [
